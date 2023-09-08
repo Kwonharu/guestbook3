@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	<form action="" method="get">
+	<form action="/guestbook3/gbc" method="get">
 		<table border="1" width="540px">
 			<tr>
 				<td>이름</td><td><input type="text" name="name"></td>
@@ -40,11 +40,11 @@
 			<td><%=guestList.get(i).getNo()%></td>
 			<td><%=guestList.get(i).getName()%></td>
 			<td><%=guestList.get(i).getReg_date()%></td>
-			<td><a href="">수정</a></td>
-			<td><a href="">삭제</a></td>
+			<!-- <td><a href="">수정</a></td> -->
+			<td><a href="/guestbook3/gbc?action=deleteForm&id=<%=guestList.get(i).getNo()%>">삭제</a></td>
 		</tr>
 		<tr>
-			<td colspan="5"><%=guestList.get(i).getContent()%></td>
+			<td colspan="4"><%=guestList.get(i).getContent()%></td>
 		</tr>
 	</table>
 	<br>
