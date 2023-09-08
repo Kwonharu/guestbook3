@@ -32,6 +32,7 @@ public class GuestbookController extends HttpServlet {
 			rd.forward(request, response);
 
 		} else if("insert".equals(action)) {
+			//입력
 			
 			System.out.println("insert");
 			
@@ -44,6 +45,46 @@ public class GuestbookController extends HttpServlet {
 			GuestDao guestDao = new GuestDao();
 			int count = guestDao.guestInsert(guestVo);
 			System.out.println(count);
+			
+			response.sendRedirect("/guestbook3/gbc?action=addList");
+			
+		} else if("deleteForm".equals(action)) {
+			//삭제폼
+			
+			System.out.println("deleteForm");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			/*
+			 * request.setAttribute("personId", personId);
+			 * 
+			 * 이미 request Parameter에 id가 있기 때문에 할 필요 x
+			 * -> 받은 Parameter 외에 새롭게 가공한 data가 있을 땐 Attribute에 넣음
+			 */
+			
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/deleteForm.jsp");
+		    rd.forward(request, response);
+		    
+		} else if("delete".equals(action)) {
+			//삭제
+			
+			System.out.println("delete");
+			
+			int no = Integer.parseInt(request.getParameter("no"));
+			String password = request.getParameter("password");
+			
+			GuestDao guestDao = new GuestDao();
+			GuestVo guestVo = guestDao.getGuest(no);
+			
+			//파라미터로 가져온 pw와 db에서 가져온 pw가 일치하는지 확인
+			if(guestVo.getPassword().equals(password)) {
+
+				int count = guestDao.guestDelete(no);
+				
+				System.out.println(count);
+
+			} else {
+				System.out.println("삭제 실패");
+			}
 			
 			response.sendRedirect("/guestbook3/gbc?action=addList");
 			

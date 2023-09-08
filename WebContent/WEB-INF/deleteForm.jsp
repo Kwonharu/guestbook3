@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
     
 <%
-	String id = request.getParameter("id");
-	int personId = Integer.parseInt(id);
+	int no = Integer.parseInt(request.getParameter("no"));
 %>
 
 <!DOCTYPE html>
@@ -13,19 +12,19 @@
 <title>deleteForm</title>
 </head>
 <body>
-	<form action="/GuestBook3/GBC" method="get">
+	<form action="/guestbook3/gbc" method="get">
 		<table>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="hidden" name="action" value="delete"></td>
-				<td><input type="hidden" name="id" value="<%=personId%>"></td>
-				<td><input type="password" name="password"></td>
+				<td><input type="text" name="password"></td>
 				<td><button type="submit">삭제</button></td>
+				<td><input type="hidden" name="action" value="delete"></td>
+				<td><input type="hidden" name="no" value="<%=no%>"></td>
 			</tr>
 		</table>
 	</form>
 	<br><br>
 	
-	<a href="/GuestBook3/GBC?action=addList">메인으로 돌아가기</a>
+	<a href="/guestbook3/gbc?action=addList">메인으로 돌아가기</a>
 </body>
 </html>

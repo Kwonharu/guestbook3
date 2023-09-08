@@ -31,6 +31,7 @@
 				<td colspan="4"><button type="submit">등록</button></td>
 			</tr>
 		</table>
+		<input type="hidden" name="action" value="insert">
 	</form>
 	<br>
 
@@ -41,7 +42,7 @@
 			<td><%=guestList.get(i).getName()%></td>
 			<td><%=guestList.get(i).getReg_date()%></td>
 			<!-- <td><a href="">수정</a></td> -->
-			<td><a href="/guestbook3/gbc?action=deleteForm&id=<%=guestList.get(i).getNo()%>">삭제</a></td>
+			<td><a href="/guestbook3/gbc?action=deleteForm&no=<%=guestList.get(i).getNo()%>">삭제</a></td>
 		</tr>
 		<tr>
 			<td colspan="4"><%=guestList.get(i).getContent()%></td>
